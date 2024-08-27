@@ -3,12 +3,12 @@
   "service": "app",
   "waitFor": "onCreateCommand",
   "updateContentCommand": "",
-  "postCreateCommand": "pip install --user -r requirements.txt && python pillarpointstewards/manage.py collectstatic && python pillarpointstewards/manage.py migrate",
+  "postCreateCommand": "pip install --user -r requirements.txt && python project_management/manage.py collectstatic && python project_management/manage.py migrate",
   "postAttachCommand": {
-    "server": "python pillarpointstewards/manage.py runserver"
+    "server": "python project_management/manage.py runserver"
   },
   "containerEnv": {
-    "DATABASE_URL": "postgres://postgres:postgres@db/pillarpointstewards"
+    "DATABASE_URL": "postgres://postgres:postgres@db/project_management"
   },
   "customizations": {
     "vscode": {
