@@ -1,5 +1,27 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {
-  }
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "waitFor": "onCreateCommand",
+  "updateContentCommand": "",
+  "postCreateCommand": "pip install --user -r requirements.txt && python pillarpointstewards/manage.py collectstatic && python pillarpointstewards/manage.py migrate",
+  "postAttachCommand": {
+    "server": "python pillarpointstewards/manage.py runserver"
+  },
+  "containerEnv": {
+    "DATABASE_URL": "postgres://postgres:postgres@db/pillarpointstewards"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  },
+  "portsAttributes": {
+    "8000": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "forwardPorts": [8000]
 }
